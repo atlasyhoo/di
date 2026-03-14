@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destiny Insights - Support</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f7;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        header .icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section h2 i {
+            font-size: 1.5rem;
+        }
+
+        .section h3 {
+            color: #555;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-card {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-card .icon {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-card h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .disclaimer {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .disclaimer i {
+            font-size: 1.5rem;
+            color: #ffc107;
+            margin-top: 0.2rem;
+        }
+
+        .disclaimer strong {
+            color: #856404;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            background: white;
+            margin-top: 2rem;
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+
+        .faq-item h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-item h4 i {
+            font-size: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-info i {
+            color: #667eea;
+            font-size: 1.3rem;
+        }
+
+        .contact-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+        }
+
+        .contact-highlight h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-highlight .email {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-highlight .email:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.05);
+        }
+
+        .contact-highlight p {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="icon">
+            <i class="fas fa-fire"></i>
+        </div>
+        <h1>Destiny Insights</h1>
+        <p>Discover Your Life Path Through Chinese Metaphysics</p>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2><i class="fas fa-question-circle"></i> Support</h2>
+
+            <div class="contact-highlight">
+                <h3><i class="fas fa-envelope"></i> Contact Us</h3>
+                <p>For technical support, feature requests, or general inquiries:</p>
+                <a href="mailto:atlas19870918@gmail.com" class="email">atlas19870918@gmail.com</a>
+                <p>We typically respond within 24-48 hours</p>
+            </div>
+
+            <h3>Frequently Asked Questions (FAQ)</h3>
+
+            <div class="faq-item">
+                <h4><i class="fas fa-check-circle"></i> How accurate is the BaZi calculation?</h4>
+                <p>Our BaZi calculations are based on traditional Chinese metaphysical principles and use advanced algorithms to ensure accuracy. While the calculations are based on time-honored practices, it's important to remember that results are for guidance and self-reflection purposes only.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4><i class="fas fa-user-md"></i> Can I use this app to make important life decisions?</h4>
+                <p>Destiny Insights is designed for self-awareness and personal growth purposes only. It should not be used as the sole basis for making major life decisions. Always use your own judgment and consider professional advice when making important choices.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4><i class="fas fa-calendar-alt"></i> How often should I check my daily fortune?</h4>
+                <p>You can check your daily fortune as often as you like. The daily fortune feature is updated every day, providing fresh insights to help you navigate your day with awareness.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4><i class="fas fa-users"></i> Can I save multiple profiles?</h4>
+                <p>Yes, the history feature allows you to save multiple BaZi profiles for different people, making it easy to track and compare different calculations.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4><i class="fas fa-lock"></i> Is my data private?</h4>
+                <p>Yes, all your personal data and calculation results are stored locally on your device and are not shared with third parties. You have complete control over your data.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4><i class="fas fa-mobile-alt"></i> What should I do if the app crashes or freezes?</h4>
+                <p>First, try restarting the app. If the issue persists, clear the app cache or reinstall the app. If problems continue, please contact us at atlas19870918@gmail.com with details about your device and the issue.</p>
+            </div>
+        </div>
+         <div class="section">
+            <h2><i class="fas fa-info-circle"></i> About the App</h2>
+            <p>Destiny Insights is a comprehensive app that unlocks the ancient wisdom of Chinese metaphysics, offering users a profound window into their life's potential. Blending traditional Eastern philosophy with modern technology, this app provides personalized insights and guidance based on the time-honored practice of BaZi (Eight Characters) calculation.</p>
+
+            <div class="disclaimer">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <strong>Important Notice:</strong> All calculation results and fortune predictions are for self-reference and educational purposes only. They do not replace professional advice or personal judgment. The app is intended for personal growth and self-discovery, not for making critical life decisions.
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-star"></i> Features</h2>
+
+            <h3>Chinese Metaphysics Calculations</h3>
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-chart-pie icon"></i>
+                    <h4>BaZi Calculation</h4>
+                    <p>Generate detailed destiny charts based on birth date, time, and location, revealing personality traits, strengths, challenges, and life path.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-sun icon"></i>
+                    <h4>Daily Fortune</h4>
+                    <p>Get personalized daily predictions including fortune rating, career guidance, relationship insights, health recommendations, and lucky directions.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-calendar icon"></i>
+                    <h4>Yearly Fortune</h4>
+                    <p>Plan ahead with comprehensive yearly predictions covering overall outlook, career prospects, relationship dynamics, and health trends.</p>
+                </div>
+            </div>
+
+            <h3>Spiritual & Cultural Features</h3>
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-fire icon"></i>
+                    <h4>Incense Prayer Ritual</h4>
+                    <p>Experience traditional Chinese incense prayer with virtual rituals and receive lucky messages and blessings.</p>
+                </div>
+            </div>
+
+            <h3>User Experience</h3>
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-history icon"></i>
+                    <h4>History Records</h4>
+                    <p>Save multiple profiles, access past predictions, and track patterns over time.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-user-astronaut icon"></i>
+                    <h4>Intuitive Interface</h4>
+                    <p>Modern, user-friendly design that makes complex metaphysical concepts accessible to users of all backgrounds.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-language icon"></i>
+                    <h4>Multilingual Support</h4>
+                    <p>Available in multiple languages, with careful translations to maintain cultural nuances.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-cogs"></i> How It Works</h2>
+            <ol class="step-list">
+                <li><strong>Enter Birth Details:</strong> Input your birth date, time, place, and gender for accurate BaZi calculation.</li>
+                <li><strong>Generate Your Chart:</strong> The app will create a comprehensive BaZi chart based on your information.</li>
+                <li><strong>Explore Your Destiny:</strong> Review detailed insights about your personality, strengths, challenges, and life path.</li>
+                <li><strong>Check Daily Fortune:</strong> Get personalized daily predictions to guide your day.</li>
+                <li><strong>Plan for the Future:</strong> Use yearly fortune predictions to prepare for upcoming opportunities and challenges.</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
+            <p>We are committed to protecting your privacy. All assessment data is stored locally on your device. We do not collect, store, or share your personal information or assessment results with any third parties.</p>
+
+            <h3>Data Collection</h3>
+            <ul>
+                <li><i class="fas fa-mobile-alt"></i> Personal data and calculation results are stored locally on your device</li>
+                <li><i class="fas fa-ban"></i> No personal information is transmitted to our servers</li>
+                <li><i class="fas fa-chart-line"></i> Anonymous usage statistics may be collected to improve app performance</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Destiny Insights. All rights reserved.</p>
+        <p><i class="fas fa-envelope"></i> For support: <a href="mailto:atlas19870918@gmail.com">atlas19870918@gmail.com</a></p>
+    </footer>
+</body>
+</html>
